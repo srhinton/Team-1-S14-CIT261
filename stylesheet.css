@@ -1,27 +1,9 @@
 #heading{
 background-color: #000033;
 }
-#footing{
-    width:100%;
-    height:10%;
-    background-color:#000033;
-}
-
 #main{
     height:200px;
     width:250px;
-}
-#portfolio{
-    height:150px;
-    width:150px;
-}
-#home{
-    height:150px;
-    width:150px;
-}
-#news{
-    height:150px;
-    width:150px;
 }
 *{
     padding-left:5%;
