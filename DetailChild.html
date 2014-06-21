@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+              <title>My Stocks</title>
+        <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
+		
+		<SCRIPT language="javascript">
+
+			function sendStockInfo() {
+				var title = ["Previous Close","Open","Bid","Ask","Day Range","52 wk Range","Volume","Avg Vol (3m)","Market Cap","P/E","EPS","Div & Yield"];
+				var stockDetail = JSON.parse(localStorage.getItem('stockInfo'));
+				var info = [
+					stockDetail.ticker,
+					stockDetail.current,
+					stockDetail.prevclose,
+					stockDetail.open,
+					stockDetail.bid,
+					stockDetail.ask,
+					stockDetail.dayOpen + " - " + stockDetail.dayClose,
+					stockDetail.yBegin + " - " + stockDetail.yEnd,
+					stockDetail.vol,
+					stockDetail.avgVol,
+					stockDetail.cap,
+					stockDetail.pe,
+					stockDetail.eps,
+					stockDetail.div];
+				// get the reference for the body
+				var body = document.getElementsByTagName("body")[0];
+ 
+				// creates a <table> element and a <tbody> element
+				var tbl     = document.createElement("table");
+				var tblBody = document.createElement("tbody");
+ 
+				// creating all cells
+				for (var i = 0; i < 12; i++) {
+					// creates a table row
+					var row = document.createElement("tr");
+ 
+					for (var j = 0; j < 2; j++) {
+						// Create a <td> element and a text node, make the text
+						// node the contents of the <td>, and put the <td> at
+						// the end of the table row
+						var cell = document.createElement("td");
+						// Select which arrey to use in populating the cell
+						if (j === 0) {
+							var cellText = document.createTextNode(title[i]);
+						} else {
+							var cellText = document.createTextNode(info[i+2]);
+						}
+						cell.appendChild(cellText);
+						row.appendChild(cell);
+					}
+ 
+					// add the row to the end of the table body
+					tblBody.appendChild(row);
+				}
+ 
+				// put the <tbody> in the <table>
+				tbl.appendChild(tblBody);
+				// appends <table> into <body>
+				body.appendChild(tbl);
+				// sets the border attribute of tbl to 2;
+				tbl.setAttribute("border", "1");
+			}
+		</SCRIPT>
+    </head>
+
+    <body onload="sendStockInfo()">
+        <header id ="title">
+            <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
+        </header>
+
+		<main style="padding-top:5%x;"><h1 style="padding-left:10%;">My Detail - Child</h1>
+		</main>  
+
+        <footer>
+			<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>
+        </footer>
+
+	</body>
+</html>

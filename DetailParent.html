@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+              <title>My Stocks</title>
+        <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
+		
+		<SCRIPT language="javascript">
+
+			function sendStockInfo() {
+				localStorage.setItem('stockInfo', JSON.stringify({
+					ticker:    "CAG",
+					current:   "32.39",
+					prevclose: "32.19",
+					open:      "32.13",
+					bid:       "32.00",
+					ask:       "32.47",
+					dayOpen:   "32.10",
+					dayClose:  "32.48",
+					yBegin:    "28.09",
+					yEnd:      "37.28",
+					vol:       "2,822,834",
+					avgVol:    "2,631,360",
+					cap:       "13.63B",
+					pe:        "16.87",
+					eps:       "1.92",
+					div:       "1.00",
+					change:     function() {return this.current - this.open},
+					percChange: function() {return 1 - (this.open / this.current)}
+				}));
+				
+				window.location.href = 'DetailChild.html';
+			}
+
+		</SCRIPT>
+    </head>
+
+    <body>
+        <header id ="title">
+            <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
+        </header>
+
+		<main style="padding-top:5%x;"><h1 style="padding-left:10%;">My Detail - Parent</h1>
+		</main>  
+
+        <footer>
+			<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>
+        </footer>
+
+		<INPUT type="button" value="Detail Page" onclick="sendStockInfo()" />
+
+	</body>
+</html>
