@@ -89,7 +89,7 @@
         
 
 		 
-		<TABLE id="dataTable" width="500px" border="1">
+		<TABLE id="dataTable" width="800px" border="1">
                     <TR>
                     <TD><INPUT</TD>
                     <TD>Ticker</TD>
