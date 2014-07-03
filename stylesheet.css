@@ -10,3 +10,7 @@ background-color: #000033;
     padding-right:5%;
     font-family:arial;
 }
+
+td {
+    font-size: 12px;
+}
