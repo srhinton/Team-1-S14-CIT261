@@ -6,13 +6,77 @@
         <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
         
         <script type="text/javascript">
+            
+            if(localStorage.getItem("flag")==="set"){
+                var nfone=localStorage.getItem("nfone");
+                var nftwo=localStorage.getItem("nftwo");
+                var nfthree=localStorage.getItem("nfthree");
+                var nffour=localStorage.getItem("nffour");
+                var nffive=localStorage.getItem("nffive");
+                var nfsix=localStorage.getItem("nfsix");
+                
+                if (nfone===true){
+                document.getElementById('tdone').style.display="inline";
+            }
+            else{
+                document.getElementById('tdone').style.display="none";
+            }
+                        if (nftwo===true){
+                document.getElementById('tdtwo').style.display="inline";
+            }
+            else{
+                document.getElementById('tdtwo').style.display="none";
+            }
+                        if (nfthree===true){
+                document.getElementById('tdthree').style.display="inline";
+            }
+            else{
+                document.getElementById('tdthree').style.display="none";
+            }
+                        if (nffour===true){
+                document.getElementById('tdfour').style.display="inline";
+            }
+            else{
+                document.getElementById('tdfour').style.display="none";
+            }
+                        if (nffive===true){
+                document.getElementById('tdfive').style.display="inline";
+            }
+            else{
+                document.getElementById('tdfive').style.display="none";
+            }
+                        if (nfsix===true){
+                document.getElementById('tdsix').style.display="inline";
+            }
+            else{
+                document.getElementById('tdsix').style.display="none";
+            }
+            document.getElementById('checkform').style.display="none";
+            }
+            
+            </script>
+            
+            
+            <script type="text/javascript">
+                
+            
             function myfunction(){
+                localStorage.setItem("flag", "set");
+                
             var nfone=document.getElementById("nfone").checked;
             var nftwo=document.getElementById("nftwo").checked;
             var nfthree=document.getElementById("nfthree").checked;
             var nffour=document.getElementById("nffour").checked;
             var nffive=document.getElementById("nffive").checked;
             var nfsix=document.getElementById("nfsix").checked;
+            
+            localStorage.nfone=document.getElementById("nfone").checked;
+            localStorage.nftwo=document.getElementById("nftwo").checked;
+            localStorage.nfthree=document.getElementById("nfthree").checked;
+            localStorage.nffour=document.getElementById("nffour").checked;
+            localStorage.nffive=document.getElementById("nffive").checked;
+            localStorage.nfsix=document.getElementById("nfsix").checked;
+            
             
             if (nfone===true){
                 document.getElementById('tdone').style.display="inline";
@@ -61,7 +125,8 @@
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
         </header>
 
-    <main style="padding-top:5%;"><h1 style="padding-left:10%;">News Feeds</h1>
+    <main style="padding-top:5%;">
+        <h1 style="padding-left:10%;">News Feeds</h1>
         <div id="checkform">   
   <input type="checkbox" id="nfone">Nasdaq Basics<br>
   <input type="checkbox" id="nftwo"> Market Watch Top Stories<br>
