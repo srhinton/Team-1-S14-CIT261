@@ -1,4 +1,4 @@
-<footer class="bottomborder">
+<footer class="footer">
     
 	<a href='http://www.mystocksapp.com/portfolio.php'>
 		<img id='portfolio' src='/media/portfolio.png' style='float:left;margin-left:15%;padding:55px 10px 10px 10px; height:100px;width:100px;' alt="My Portfolio"></a>
