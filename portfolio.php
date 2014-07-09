@@ -108,7 +108,7 @@
 	
 	<TABLE id="dataTable" border="1">
                     <TR>
-                    <TD><INPUT</TD>
+                    <TD>INPUT</TD>
                     <TD>Company Name</TD>
 					<TD>Company Symbol</TD>
                     <TD>Current Price</TD>
