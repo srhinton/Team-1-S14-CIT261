@@ -1,40 +1,37 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-              <title>My Stocks</title>
+              <title>Portfolio Page| Realtime Quotes</title>
         <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
-        
-        
-        		<SCRIPT language="javascript">
+		
+				<script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+					<script type="text/javascript">
+					$(function(tableID){
+					$('#submit').on("click", function(e){
+					console.log('Submit');
+					e.preventDefault();
+					getData(tableID);
+					});
+					});
 
-			function getStockInfo() {
-			var tick;
-			var info = prompt("Enter a Stock Ticker","S");
+					var getData = function(tableID) {
+					console.log('GetData');
+					var url = "http://query.yahooapis.com/v1/public/yql";
+					var symbol = $("#symbl").val();
+					var data = encodeURIComponent("select * from yahoo.finance.quotes where symbol in ('" + symbol + "')");
 
-			if (info != null) {;
-			}
-			}
+					$.getJSON(url, 'q=' + data + "&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json")
+					.done(function (data) {
 
-			function addRow(tableID) {
+//This is where all the .text.data.query information was.					
 
-				var si = getStockInfo()
-
-				var txt = '{"stocks":[' +
-						  '{"ticker":"F",   "current":"16.68", "pclose":"16.79",  "open":"16.82" },' +
-						  '{"ticker":"CAG", "current":"32.48", "pclose":"32.37",  "open":"32.41" },' +
-						  '{"ticker":"APPL","current":"647.35","pclose":"644.82", "open":"346.25" }]}';
-			  
 				var table = document.getElementById(tableID);
 				var rowCount = table.rows.length;
 				var row = table.insertRow(rowCount);
-			  
-				myStocksObj = JSON.parse(txt);
-				holdTicker = myStocksObj.stocks[rowCount-1].ticker; 
-				holdCurrent = myStocksObj.stocks[rowCount-1].current;
-				holdClose = myStocksObj.stocks[rowCount-1].pclose;
-				holdOpen = myStocksObj.stocks[rowCount-1].open;
-	 
+			
+
 				var cell1 = row.insertCell(0);
 				var element1 = document.createElement("input");
 				element1.type = "checkbox";
@@ -42,18 +39,38 @@
 				cell1.appendChild(element1);
 	 
 				var cell2 = row.insertCell(1);
-				cell2.innerHTML = holdTicker
+				cell2.innerHTML = data.query.results.quote.Name;
 				
 				var cell3 = row.insertCell(2);
-				cell3.innerHTML = holdCurrent
+				cell3.innerHTML = data.query.results.quote.Symbol;
 				
 				var cell4 = row.insertCell(3);
-				cell4.innerHTML = holdClose
+				cell4.innerHTML = data.query.results.quote.LastTradePriceOnly;
 				
 				var cell5 = row.insertCell(4);
-				cell5.innerHTML = holdOpen
-	 
-	 
+				cell5.innerHTML = data.query.results.quote.ChangeRealtime;
+				
+				var cell6 = row.insertCell(5);
+				cell6.innerHTML = data.query.results.quote.PercentChange;
+				
+				var cell7 = row.insertCell(6);
+				cell7.innerHTML = data.query.results.quote.Open;
+				
+				var cell8 = row.insertCell(7);
+				cell8.innerHTML = data.query.results.quote.PreviousClose;
+				
+				var cell9 = row.insertCell(8);
+				cell9.innerHTML = data.query.results.quote.Volume;
+				
+				var cell10 = row.insertCell(9);
+				cell10.innerHTML = "<input type='button' value='Details' a href='/DetailChild.html'/>"; //currently not working
+					
+					})
+					.fail(function (jqxhr, textStatus, error) {
+					var err = textStatus + ", " + error;
+					$("#result").text('Request failed: ' + err);
+					});
+
 			}
 	 
 			function deleteRow(tableID) {
@@ -74,41 +91,50 @@
 					alert(e);
 				}
 			}
-		</SCRIPT>
-        
-        
+					</script>
+					
+					
+		
     </head>
     <body>
-        <header id ="title">
+        
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
-        </header>
 
-    <main style="padding-top:5%x;"><h1 style="padding-left:10%;">My Portfolio</h1>
-        
-        
-        
 
-		 
-		<TABLE id="dataTable" width="800px" border="1">
+<main>
+<h1 style="padding-left:10%;">Portfolio Page</h1>
+
+	<div class="mainbody">
+	
+	<TABLE id="dataTable" border="1">
                     <TR>
                     <TD><INPUT</TD>
-                    <TD>Ticker</TD>
-                    <TD>Current</TD>
-                    <TD>Prev. Close</TD>
-                    <TD>Open</TD>
+                    <TD>Company Name</TD>
+					<TD>Company Symbol</TD>
+                    <TD>Current Price</TD>
+					<TD>Dollar Change</TD>
+					<TD>Percent Change</TD>
+					<TD>Today's Open</TD>
+                    <TD>Previous Close</TD>
+                    <TD>Today's Volume</TD>
+					<TD>Stock Details</TD>
                     </TR>
 		</TABLE>
-    
-      		<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />
-		<INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
-        
-        
-    
-    </main>  
-           <footer>
-                <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>
-            </footer>
-    
-    </body>
+			<input type="text" placeholder="Input Stock Symbol here" id="symbl";/>
+			<button type="submit" onClick="getData('dataTable')">Get Data & Add Row</button>
+ <!--     		<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />  -->
+			<INPUT type="button" value="Delete Row(s)" onclick="deleteRow('dataTable')" />
+	</div>	
+
+</main>
+
+<?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>
+
+
+</body>
 
 </html>
+
+
+
+
