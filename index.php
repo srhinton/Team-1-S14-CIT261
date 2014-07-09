@@ -12,7 +12,7 @@
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
         </header>
 
-    <main style="padding-top:5%;"><h1 style="padding-left:10%;">Welcome to the My Stocks Web Application</h1>
+    <main><h1 style="padding-left:10%;">Welcome to the My Stocks Web Application</h1>
     
     </main>  
            <footer>
