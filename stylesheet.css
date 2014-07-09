@@ -1,10 +1,11 @@
 
 .header,.footer{
 	background-color: #000033;
-	height:225px;
+	min-height:200px;
 	width:90%;
 	margin-left: auto;
 	margin-right: auto;
+	
 }
 
 .logo{
@@ -20,11 +21,12 @@
 	margin-right: auto;
 }
 
-#main{
-    height:225px;
-    width:90%;
-	margin-left: auto;
+main{
+	padding: 3%;
+    Min-height:225px;
+    margin-left: auto;
 	margin-right: auto;
+	
 }
 
 

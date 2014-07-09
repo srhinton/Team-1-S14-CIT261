@@ -96,7 +96,7 @@
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
         </header>
 
-    <main style="padding-top:5%;">
+    <main>
         <h1 style="padding-left:10%;">News Feeds</h1>
         <div id="checkform" style="padding-left:10%;">   
   <input type="checkbox" id="nfone">Nasdaq Basics<br>
