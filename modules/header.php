@@ -1,4 +1,4 @@
-<header class='header'>
+<header class='heading'>
 
 	<a href='http://www.mystocksapp.com/index.php'>
 
