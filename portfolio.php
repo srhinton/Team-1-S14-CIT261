@@ -120,10 +120,10 @@
 					<TD>Stock Details</TD>
                     </TR>
 		</TABLE>
-			<input type="text" placeholder="Input Stock Symbol here" id="symbl";/>
+			<input type="text" placeholder="Input Stock Symbol here" id="symbl">
 			<button type="submit" onClick="getData('dataTable')">Get Data & Add Row</button>
- <!--     		<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />  -->
-			<INPUT type="button" value="Delete Row(s)" onclick="deleteRow('dataTable')" />
+ <!--     		<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" >  -->
+			<INPUT type="button" value="Delete Row(s)" onclick="deleteRow('dataTable')">
 	</div>	
 
 </main>
