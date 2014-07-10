@@ -1,11 +1,36 @@
-#heading{
-background-color: #000033;
+
+.header,.footer{
+	background-color: #000033;
+	min-height:200px;
+	width:90%;
+	margin-left: auto;
+	margin-right: auto;
+	
 }
-#main{
-    height:200px;
-    width:250px;
+
+.logo{
+	width: 175px;
+    height: 175px;
+	margin: 1em;	
+	
 }
+
+.mainbody {
+	width:90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+main{
+	padding: 3%;
+    Min-height:225px;
+    margin-left: auto;
+	margin-right: auto;
+	
+}
+
+
 *{
-    padding-left:5%;
-    padding-right:5%;
+    
+    font-family:arial;
 }
