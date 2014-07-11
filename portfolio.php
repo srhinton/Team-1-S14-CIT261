@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -63,7 +62,40 @@
 				cell9.innerHTML = data.query.results.quote.Volume;
 				
 				var cell10 = row.insertCell(9);
-				cell10.innerHTML = "<input type='button' value='Details' a href='/DetailChild.html'/>"; //currently not working
+				var element2 = document.createElement("input");
+				element2.type = "button";
+				element2.name = "dbutton[]";
+				element2.value = "Details";
+				var holdTicker = data.query.results.quote.Symbol;
+				var goDetail = 'MyStocksDetail.html?id=' + holdTicker;
+				element2.onclick = function goToDetails() {
+					var myDetailURL = goDetail;
+					window.location.href = myDetailURL;
+					}
+				cell10.appendChild(element2);
+									
+				localStorage.setItem(holdTicker, JSON.stringify({
+					ticker:    holdTicker,
+					current:   data.query.results.quote.LastTradePriceOnly,
+					prevclose: data.query.results.quote.PreviousClose,
+					open:      data.query.results.quote.Open,
+					bid:       data.query.results.quote.Bid,
+					ask:       data.query.results.quote.Ask,
+					dayOpen:   data.query.results.quote.DaysRange,
+					dayClose:  "00.00",
+					yBegin:    data.query.results.quote.YearRange,
+					yEnd:      "00.00",
+					vol:       data.query.results.quote.Volume,
+					avgVol:    data.query.results.quote.AverageDailyVolume,
+					cap:       data.query.results.quote.MarketCapitalization,
+					pe:        data.query.results.quote.PERatio,
+					eps:       data.query.results.quote.EarningsShare,
+					div:       data.query.results.quote.DividendYield,
+					name:      data.query.results.quote.Name,
+					change:     function() {return this.current - this.open},
+					percChange: function() {return 1 - (this.open / this.current)}
+				}));
+
 					
 					})
 					.fail(function (jqxhr, textStatus, error) {
@@ -91,6 +123,11 @@
 					alert(e);
 				}
 			}
+
+
+//			function goToDetails(goDetailURL) {
+//				window.location.href =  goDetailURL;
+//			}
 					</script>
 					
 					
@@ -134,7 +171,3 @@
 </body>
 
 </html>
-
-
-
-
