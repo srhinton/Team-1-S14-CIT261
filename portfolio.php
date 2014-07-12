@@ -113,10 +113,12 @@
 				for(var i=0; i<rowCount; i++) {
 					var row = table.rows[i];
 					var chkbox = row.cells[0].childNodes[0];
+					var delTicker = row.cells[2].innerHTML;
 					if(null != chkbox && true == chkbox.checked) {
 						table.deleteRow(i);
 						rowCount--;
 						i--;
+						localStorage.removeItem(delTicker);
 					} 
 				}
 				}catch(e) {
@@ -125,9 +127,6 @@
 			}
 
 
-//			function goToDetails(goDetailURL) {
-//				window.location.href =  goDetailURL;
-//			}
 					</script>
 					
 					
@@ -159,7 +158,6 @@
 		</TABLE>
 			<input type="text" placeholder="Input Stock Symbol here" id="symbl">
 			<button type="submit" onClick="getData('dataTable')">Get Data & Add Row</button>
- <!--     		<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" >  -->
 			<INPUT type="button" value="Delete Row(s)" onclick="deleteRow('dataTable')">
 	</div>	
 
@@ -171,3 +169,7 @@
 </body>
 
 </html>
+
+
+
+
