@@ -8,8 +8,16 @@
 		<SCRIPT language="javascript">
 
 			function sendStockInfo() {
+
+				var parameters = location.search.substring(1).split("&");
+
+				var temp = parameters[0].split("=");
+				t = unescape(temp[1]);
+
+
+
 				var title = ["Previous Close","Open","Bid","Ask","Day Range","52 wk Range","Volume","Avg Vol (3m)","Market Cap","P/E","EPS","Div & Yield"];
-				var stockDetail = JSON.parse(localStorage.getItem('stockInfo'));
+				var stockDetail = JSON.parse(localStorage.getItem(t));
 				var info = [
 					stockDetail.ticker,
 					stockDetail.current,
@@ -64,12 +72,12 @@
 				headCell2.style.color = cellColor;
 
 				// Get the chart
-				var ifr = document.createElement('iframe');
-				var stockTicker = 'http://chart.finance.yahoo.com/z?s=' + info[0] + '&t=12m&z=s';
-				ifr.src = stockTicker;
-				ifr.height = '250'
-				ifr.width = '400'
-				document.body.appendChild(ifr);
+				var ifr = document.createElement('iframe')
+				var stockTicker = 'http://chart.finance.yahoo.com/z?s=' + info[0] + '&t=12m&z=s'
+				ifr.src = stockTicker
+				ifr.height = '205'
+				ifr.width = '360'
+				document.body.appendChild(ifr)
  
 				// creates a <table> element and a <tbody> element
 				var tbl     = document.createElement("table");
@@ -118,8 +126,7 @@
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
         </header>
 
-		<main style="padding-top:5%x;"><h1 style="padding-left:10%;">My Detail - Child</h1>
-		</main>  
+		<main style="padding-top:5%x;"><h1 style="padding-left:10%;"></main>  
 
 
         <footer>
