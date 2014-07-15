@@ -146,7 +146,8 @@ tbl.setAttribute("border", "1");
     <body onload="sendStockInfo()">
         
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
-        
+       
+<main style="padding-top:5%x;"><h2 style="padding-left:10%;"></h2>
 <main>
 <div><div>
 </main>
