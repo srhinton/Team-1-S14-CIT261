@@ -5,8 +5,17 @@
               <title>My Stocks</title>
         <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
         <script src="scripts/jquery.js"></script>
+        <link rel="stylesheet" href="css/animations.css">
+	<script type="text/javascript" src="scripts/fasw.transitions.min.js"></script>
+
         
-        <script type="text/javascript">
+        
+             <script type="text/javascript">
+$(function(){
+   loadFunc();
+});
+            </script>
+     <script type="text/javascript">
         function loadFunc(){
             if(localStorage.flag==="set"){
 
@@ -91,7 +100,7 @@
         </script>
 
     </head>
-    <body onload="loadFunc();">
+    <body class="stretchLeft">
         <header id ="title">
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
         </header>
@@ -122,6 +131,7 @@
             </tr>
         </table>
 <button id ="showbutton" onclick="show();" style="display:none; padding-left:5%;">Reset Options</button>
+
     </main>  
            <footer>
                 <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>

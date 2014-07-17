@@ -2,8 +2,11 @@
 
 	<a href='http://www.mystocksapp.com/index.php'>
 
-		<img class='logo' src="http://www.mystocksapp.com/media/mystocks.png" alt="MyStocks" >
+		<img class='tossing' src="http://www.mystocksapp.com/media/mystocks.png" alt="MyStocks" style="width:175px; height:175px; margin: 1em;">
 	</a>
-
+    <div id="wrapper">
+    </div>
+    
+    
 </header>
             

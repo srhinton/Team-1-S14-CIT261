@@ -4,7 +4,9 @@
         <meta charset="utf-8">
               <title>Portfolio Page| Realtime Quotes</title>
         <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
-
+        <link href="transition.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/animations.css">
+	<script type="text/javascript" src="scripts/fasw.transitions.min.js"></script>
 <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
 <script type="text/javascript">
 $(function(tableID){
@@ -132,7 +134,7 @@ alert(e);
 
 
     </head>
-    <body>
+    <body id="body" class="hatch">
         
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
 
