@@ -19,6 +19,15 @@
                 <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/footer.php'; ?>
             </footer>
     
+<!--	$.ajax({
+URL:"image.html",
+dataType: "html"
+})
+.done(function(data){
+$("#nameanID").html(data);
+});-->
+	
     </body>
 
 </html>
+

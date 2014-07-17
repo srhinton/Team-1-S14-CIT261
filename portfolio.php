@@ -57,7 +57,7 @@ var getData = function(tableID, sym, store) {
 				element2.name = "dbutton[]";
 				element2.value = "Details";
 				var holdTicker = data.query.results.quote.Symbol;
-				var goDetail = 'MyStocksDetail.php?id=' + holdTicker;
+				var goDetail = 'mystocksdetail.php?id=' + holdTicker;
 				element2.onclick = function goToDetails() {
 					var myDetailURL = goDetail;
 					window.location.href = myDetailURL;
