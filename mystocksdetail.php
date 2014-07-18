@@ -73,6 +73,7 @@ info.push(data.query.results.quote.MarketCapitalization);
 info.push(data.query.results.quote.PERatio);
 info.push(data.query.results.quote.EarningsShare);
 info.push(data.query.results.quote.DividendYield);
+info.push(data.query.results.quote.Name);
 
 
 // get the reference for the body
