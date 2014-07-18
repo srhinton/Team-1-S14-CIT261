@@ -4,21 +4,46 @@
         <meta charset="utf-8">
               <title>My Stocks</title>
         <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
-
+<script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
 <SCRIPT language="javascript">
 
+var w;
+
+function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+            w = new Worker("demo_workers.js");
+        }
+        w.onmessage = function(event) {
+            sendStockInfo();
+        };
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+    }
+}
+
+var url = "https://query.yahooapis.com/v1/public/yql";
+
+
 function sendStockInfo() {
+
+
 
 var parameters = location.search.substring(1).split("&");
 
 var temp = parameters[0].split("=");
 t = unescape(temp[1]);
 
+var data = encodeURIComponent("select * from yahoo.finance.quotes where symbol in ('" + t + "')");
+	$.getJSON(url, 'q=' + data + "&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json")
+		.done(function (data) {
+
 
 var title = ["Previous Close","Open","Bid","Ask","Day Range","52 wk Range","Volume","Avg Vol (3m)","Market Cap","P/E","EPS","Div & Yield"];
-var stockDetail = JSON.parse(localStorage.getItem(t));
+//var stockDetail = JSON.parse(localStorage.getItem(t));
+
 var info = [
-stockDetail.ticker,
+/*stockDetail.ticker,
 stockDetail.current,
 stockDetail.prevclose,
 stockDetail.open,
@@ -32,7 +57,24 @@ stockDetail.cap,
 stockDetail.pe,
 stockDetail.eps,
 stockDetail.div,
-stockDetail.name];
+stockDetail.name*/];
+//var info =[] creates an empty Array---then bellow is the Array data
+info.push(data.query.results.quote.symbol);
+info.push(data.query.results.quote.LastTradePriceOnly);
+info.push(data.query.results.quote.PreviousClose);
+info.push(data.query.results.quote.Open);
+info.push(data.query.results.quote.Bid);
+info.push(data.query.results.quote.Ask);
+info.push(data.query.results.quote.DaysRange);
+info.push(data.query.results.quote.YearRange);
+info.push(data.query.results.quote.Volume);
+info.push(data.query.results.quote.AverageDailyVolume);
+info.push(data.query.results.quote.MarketCapitalization);
+info.push(data.query.results.quote.PERatio);
+info.push(data.query.results.quote.EarningsShare);
+info.push(data.query.results.quote.DividendYield);
+info.push(data.query.results.quote.Name);
+
 
 // get the reference for the body
 var body = document.getElementsByTagName("body")[0];
@@ -77,7 +119,7 @@ headRow.appendChild(headCell3);
 headBody.appendChild(headRowName);
 headBody.appendChild(headRow);
 headTbl.appendChild(headBody);
-body.appendChild(headTbl);
+$('#headTbl').html(headTbl);
 
 headTbl.setAttribute("border", "0");
 headCell.style.fontSize = "48px";
@@ -98,7 +140,7 @@ var stockTicker = 'http://chart.finance.yahoo.com/z?s=' + info[0] + '&t=12m&z=s'
 ifr.src = stockTicker
 ifr.height = '205'
 ifr.width = '360'
-document.body.appendChild(ifr)
+$('#ifr').html(ifr);
  
 // creates a <table> element and a <tbody> element
 var tbl = document.createElement("table");
@@ -135,10 +177,15 @@ tblBody.appendChild(row);
 // put the <tbody> in the <table>
 tbl.appendChild(tblBody);
 // appends <table> into <body>
-body.appendChild(tbl);
+//body.appendChild(tbl);
+$("#RUGBY").html(tbl);
 // sets the border attribute of tbl to 2;
 tbl.setAttribute("border", "1");
-
+})
+.fail(function (jqxhr, textStatus, error) {
+			var err = textStatus + ", " + error;
+			$("#result").text('Request failed: ' + err);
+			});
 }
 </SCRIPT>
     </head>
@@ -147,13 +194,15 @@ tbl.setAttribute("border", "1");
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
         </header>  
     
-    <body onload="sendStockInfo()">
+    <body onload="startWorker()">
 
       
            
         
 <main>
-<div><div>
+<div id="headTbl"></div>
+<div id="ifr"></div>
+<div id="RUGBY"></div>
 </main>
 
 
