@@ -38,3 +38,8 @@ main{
     
     font-family:arial;
 }
+
+.group{
+    height:250px;
+    width:350px;
+}

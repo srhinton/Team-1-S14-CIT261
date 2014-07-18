@@ -55,7 +55,7 @@ $(function(){
                 $(tdfive).hide('slow');
                 $(tdsix).hide('slow');
                 $(showbutton).toggle('slow');
-                localStorage.clear();
+                localStorage.removeItem('flag','one','two','three','four','five','six');
             }
             function myfunction(){
                 localStorage.setItem("flag", "set");

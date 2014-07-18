@@ -20,8 +20,11 @@
             <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
         </header>
 
-    <main><h1 style="padding-left:10%;">Welcome to the My Stocks Web Application</h1>
-    <img src="http://www.mystocksapp.com/media/groupshot.PNG" style="padding-left:5%;">
+    <main><h1 style="padding-left:25%;">Welcome to the My Stocks Web Application</h1>
+    <img src="http://www.mystocksapp.com/media/groupshot.PNG" style="padding-left:5%;" class="group">
+    <img src="http://www.mystocksapp.com/media/groupshot2.PNG" style="padding-left:5%;" class="group">
+    <img src="http://www.mystocksapp.com/media/groupshot3.PNG" style="padding-left:5%;" class="group"><br>
+    <p style='width:70%;padding-left:10%;'>This is our team. Steve Hinton, Colby Griffiths, and Calvin Phillips. This is what we've been seeing all semester! Over the course of this semester we've worked together to create this web application. The app will pull live stocks data about any stock you would like. You can also view the latest news feeds from some popular news sites through different news feeds. Your selections will be remembered when you navigate away from the page. I hope you enjoy your visit! Our team worked hard and worked well together to accomplish this goal.</p>
     </main> 
 
            <footer>
