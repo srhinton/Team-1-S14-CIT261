@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-              <title>My Stocks</title>
+              <title>My Stocks | Stock Details</title>
         <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
 <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
 <SCRIPT language="javascript">

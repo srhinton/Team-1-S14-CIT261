@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Portfolio Page| Realtime Quotes</title>
+<title>Portfolio Page| Realtime Stock Quotes</title>
 <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
 <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
 <script type="text/javascript">
@@ -110,8 +110,9 @@ function loadTbl(tblID) {
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/modules/header.php'; ?>
 <main>
-<h1 style="padding-left:10%;">Portfolio Page</h1>
+<h1 style="padding-left:10%;">MyPortfolio Page</h1>
 <div class="mainbody">
+<h3>Get live streaming information for your favorite stocks.</h3>
 <TABLE id="dataTable" border="1">
 <TR>
 <TD>Select Row</TD>
@@ -127,7 +128,8 @@ function loadTbl(tblID) {
 </TR>
 </TABLE>
 <script>loadTbl('dataTable')</script>
-<input type="text" placeholder="Input Stock Symbol here" id="symbl">
+<p style="font-size:small;">Put the ticker symbol (Ex:GOOG, AAPL, MSFT, IBM, etc.) for your favorite stock in the box below.</p>
+<input type="text" placeholder="Stock ticker" id="symbl">
 <button type="submit" onClick="getData('dataTable', '')">Get Data & Add Row</button>
 <INPUT type="button" value="Delete Row(s)" onclick="deleteRow('dataTable')">
 </div>	

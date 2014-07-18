@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-              <title>My Stocks</title>
+              <title>My Stocks|Streaming News Feeds</title>
         <link type="text/css" rel="stylesheet" href="/stylesheet.css"/>
         <script src="scripts/jquery.js"></script>
         <link rel="stylesheet" href="css/animations.css">
@@ -106,7 +106,7 @@ $(function(){
         </header>
 
     <main>
-        <h1 style="padding-left:10%;">News Feeds</h1>
+        <h1 style="padding-left:10%;">MyNews Feeds</h1>
         <div id="checkform" style="padding-left:10%;">   
   <input type="checkbox" id="nfone">Nasdaq Basics<br>
   <input type="checkbox" id="nftwo"> Market Watch Top Stories<br>
